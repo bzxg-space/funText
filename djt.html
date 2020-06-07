@@ -1,0 +1,59 @@
+<!-- 
+	20-6-7
+	有趣的文字：毒鸡汤、一言、土味情话、名言、古诗词
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" name="viewport" content="width=device-width,initial-scale=1" />
+		<link data-n-head="ssr" rel="icon" type="image/x-icon" href="img/favicon.png">
+		<title>毒鸡汤 - 有趣文字</title>
+		<meta name="author" content="bzxg" />
+		<!-- 通用的样式 -->
+		<link rel="stylesheet" type="text/css" href="css/general.css" />
+	</head>
+	<body>
+		<div id="container">
+			<!-- 头 开始 -->
+			<div id="head">
+				<a class="home" href="index.html"><img src="img/logo.png" /></a>
+				<!--  flex实现导航  -->
+				<nav class="nav-flex">
+					<a href="index.html">一言</a>
+					<a href="djt.html" class="active">毒鸡汤</a>
+					<a href="twqh.html">土味情话</a>
+					<a href="my.html">名言</a>
+					<a href="gsc.html">古诗词</a>
+				</nav>
+			</div>
+			<!-- 头 结束 -->
+			<!-- 主体 -->
+			<div id="content">
+				<div id="word-div">
+					<div id="word"></div>
+				</div>
+				<div id="deal">
+					<button onclick="copy()" title="复制">↗</button>
+					<button onclick="getData()" title="换一句">→</button>
+				</div>
+			</div>
+			<!-- 主体 结束 -->
+		</div>
+		<!-- 尾 开始 -->
+		<footer>
+			<p>©2020&nbsp;有趣文字
+				<br />
+				<a href="https://github.com/bzxg-space/funText" target="_blank" title="查看源码仓库">Github↗</a></p>
+		</footer>
+		<!-- 尾 结束 -->
+		<!-- 数据 -->
+		<script type="text/javascript" src="js/data.js"></script>
+		<!-- 通用js -->
+		<script type="text/javascript" src="js/general.js"></script>
+		<!-- 当前js -->
+		<script type="text/javascript">
+			var words = data.djt;
+			getData();
+		</script>
+	</body>
+</html>

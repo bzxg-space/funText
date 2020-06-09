@@ -1,10 +1,29 @@
-/* 清除内外边距 */
-*{
-	padding:0;
-	margin:0;
+/* 清除内外边距 全局过渡*/
+* {
+	padding: 0;
+	margin: 0;
+	-webkit-transition: font-size 0.3s linear;
+	-ms-transition: all 0.3s linear;
+	-o-transition: all 0.3s linear;
+	-moz-transition: all 0.3s linear;
+	transition: all 0.3s linear;
 }
+
+/*去除点击button时外边的框框 
+by https://blog.csdn.net/water_Popcorn/article/details/90480349*/
+button:focus,
+button:active:focus,
+button.active:focus,
+button.focus,
+button:active.focus,
+button.active.focus {
+	outline: none;
+	border-color: transparent;
+	box-shadow: none;
+}
+
 /* 清除a的下划线,添加小手 */
-a{
+a {
 	text-decoration: none;
 	cursor: pointer;
 }
@@ -18,12 +37,15 @@ div#container {
 
 /* 头 */
 div#container div#head {
-	width: 100%;
+	margin-top: 10px;
+	padding: 0px 10px;
 	display: flex;
 	flex-wrap: wrap;
 	/* 超出自动换行 */
 	flex-direction: row;
+	/* 主轴:水平 */
 	justify-content: space-between;
+	/* 均分对齐 */
 }
 
 div#container div#head a.home {
@@ -41,7 +63,6 @@ div#container div#head a.home img {
 div#container div#head nav.nav-flex {
 	width: 80%;
 	max-width: 800px;
-	margin-top: 10px;
 	display: flex;
 	flex-wrap: wrap;
 	/* 超出自动换行 */
@@ -66,92 +87,86 @@ div#container div#head nav.nav-flex a.active {
 }
 
 div#container div#head nav.nav-flex a:hover {
-	font-size: 17px;
+	font-size: 16px;
+	-webkit-text-shadow: 0px 0px 3px rgb(243, 69, 115);
+	-ms-text-shadow: 0px 0px 3px rgb(243, 69, 115);
+	-moz-text-shadow: 0px 0px 3px rgb(243, 69, 115);
+	-o-text-shadow: 0px 0px 3px rgb(243, 69, 115);
+	text-shadow: 0px 0px 3px rgb(243, 69, 115);
 }
+
 /* 主体 */
 
-div#content{
-	width: 100%;
+div#content {
 	padding: 10px;
-	margin-top:15px;
 }
-div#content div#word-div{
-	width:100%;
-	height:350px;
-	position: relative;
-	
-}
-div#content div#word-div div#word{
-	width:90%;
-	position: absolute;
-	left:50%;
-	top:50%;
-	-webkit-transform: translate(-50%,-50%);
-	-ms-transform: translate(-50%,-50%);
-	-moz-transform: translate(-50%,-50%);
-	-o-transform: translate(-50%,-50%);
-	transform: translate(-50%,-50%);
+
+div#content div#word {
+	width: 90%;
+	margin: 30px auto;
 	-webkit-box-shadow: 0px 0px 6px #999;
 	-ms-box-shadow: 0px 0px 6px #999;
 	-moz-box-shadow: 0px 0px 6px #999;
 	-o-box-shadow: 0px 0px 6px #999;
 	box-shadow: 0px 0px 6px #999;
 	color: #212529;
-    letter-spacing: 0.1em;
-    font-size: 2em;
-    font-weight: 400;
-    line-height: 1.5;padding: 8px;
-    word-break: break-word;
-    text-align: center;
-}
-div#content div#deal{
-	width:100%;
-	padding:10px;
+	letter-spacing: 0.1em;
+	font-size: 2em;
+	font-weight: 400;
+	line-height: 1.5;
+	padding: 8px;
+	/* 单词强制换行 */
+	word-break: break-word;
 	text-align: center;
 }
-div#content div#deal button{
-	display: inline-block;
-	margin: 10px 15px;
-	border-radius: 100%;
+
+div#content div#deal {
+	text-align: center;
 }
 
-div#content div#deal button:first-child{
-	border:solid 3px #d3d6dd;
-	width:60px;
-	height:60px;
-	color:#204969;
-	font-size:30px;
-	font-weight:500;
-	background: white;
+div#content div#deal button {
+	display: inline-block;
+	margin: 5px 10px;
+	border-radius: 100%;
 	cursor: pointer;
 }
-div#content div#deal button:last-child{
-	width:80px;
-	height:80px;
-	color:white;
-	font-size:30px;
-	font-weight:700;
+
+div#content div#deal button:first-child {
+	border: solid 3px #d3d6dd;
+	width: 60px;
+	height: 60px;
+	color: #204969;
+	font-size: 30px;
+	font-weight: 500;
+	background: white;
+}
+
+div#content div#deal button:last-child {
+	width: 80px;
+	height: 80px;
+	color: white;
+	font-size: 30px;
+	font-weight: 700;
 	background: #e42c64;
+	-webkit-box-shadow: 0px 0px 6px #b52b65;
+	-ms-box-shadow: 0px 0px 6px #b52b65;
+	-moz-box-shadow: 0px 0px 6px #b52b65;
+	-o-box-shadow: 0px 0px 6px #b52b65;
 	box-shadow: 0px 0px 6px #b52b65;
-	cursor: pointer;
 	border: none;
 }
-div#content div#deal button:first-child:hover{
-	border-color: #e42c64;
-	color:#333;
+
+div#content div#deal button:hover {
+	color: #333;
 }
-div#content div#deal button:last-child:hover{
-	color:#333;
+
+div#content div#deal button:first-child:hover {
+	border-color: #e42c64;
 }
 
 /* 尾 */
 footer {
-	position: fixed;
-	bottom:0;
-	left: 0;
-	width:100%;
-	background: #272343;
-	padding:10px;
+	padding: 10px 0px;
 }
 
 footer p {
@@ -161,32 +176,40 @@ footer p {
 	letter-spacing: 1.5px;
 	line-height: 24px;
 }
-footer p a{
+
+footer p a {
 	color: #a0a4af;
 }
-footer p a:hover{
-	color:rgb(243, 69, 115);
+
+footer p a:hover {
+	color: rgb(243, 69, 115);
 }
 
 /* 媒体查询 */
-@media screen and (max-width:767px){
-	body {
-		font-size: 0.8em;
+@media screen and (max-width:767px) {
+	div#content div#word {
+		font-size: 1.8em;
 	}
-	div#container{
-		width:100%;
+
+	div#container {
+		width: 98%;
 	}
-	
-	div#content div#word-div {
-		height: 270px;
+
+	div#content div#word {
+		margin: 20px auto;
 	}
-	div#content div#deal{
-		padding-top:0px;
+
+	div#container div#head nav.nav-flex a {
+		font-size: 14px;
 	}
-	div#content div#deal button{
-		margin: 5px 15px;
+
+	div#content div#deal button:first-child {
+		width: 50px;
+		height: 50px;
 	}
-	div#content{
-		padding:0px 10px;
+
+	div#content div#deal button:last-child {
+		width: 65px;
+		height: 65px;
 	}
 }

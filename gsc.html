@@ -36,10 +36,10 @@
 			<!-- 头 结束 -->
 			<!-- 主体 -->
 			<div id="content">
-				<div id="word"></div>
+				<div id="word" v-html="word"></div>
 				<div id="deal">
-					<button onclick="copy()" title="复制">↗</button>
-					<button onclick="getData()" title="换一句">→</button>
+					<button @click="copy" title="复制">↗</button>
+					<button @click="getData" title="换一句">→</button>
 				</div>
 			</div>
 			<!-- 主体 结束 -->
@@ -55,7 +55,33 @@
 		<script type="text/javascript" src="js/data.js"></script>
 		<!-- 通用js -->
 		<script type="text/javascript" src="js/general.js"></script>
+		<!-- 引入vue -->
+        <script type="text/javascript" src="js/vue-2.6.11.js"></script>
 		<!-- 当前js -->
-		<script type="text/javascript" src="js/gsc.js"></script>
+		<script type="text/javascript">
+            var app=new Vue({
+                el:"#container",
+                data:{
+                    words:data.gsc,
+                    word:""
+                },
+                methods:{
+                    /* 复制 */
+                    copy:function(){
+                        outer_copy(this.word,1);
+                    },
+                    /* 切换句子 */
+                    getData:function(){
+                        var index = Math.floor(Math.random() * this.words.length);
+                        var temp=this.words[index].split('&');
+                        var content=temp[0]+'<br/>'+'<span>'+temp[1]+'</span>';
+                        this.word=content;
+                    }
+                },
+                mounted:function(){
+                    this.getData();
+                }
+            });
+		</script>
 	</body>
 </html>

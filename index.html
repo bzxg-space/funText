@@ -11,7 +11,7 @@
 		<meta name="author" content="bzxg" />
 		<!-- 通用的样式 -->
 		<link rel="stylesheet" type="text/css" href="css/general.css" />
-	</head>
+    </head>
 	<body>
 		<div id="container">
 			<!-- 头 开始 -->
@@ -29,10 +29,10 @@
 			<!-- 头 结束 -->
 			<!-- 主体 -->
 			<div id="content">
-				<div id="word"></div>
+				<div id="word" v-html="word"></div>
 				<div id="deal">
-					<button onclick="copy()" title="复制">↗</button>
-					<button onclick="getData()" title="换一句">→</button>
+					<button @click="copy" title="复制">↗</button>
+					<button @click="getData" title="换一句">→</button>
 				</div>
 			</div>
 			<!-- 主体 结束 -->
@@ -48,10 +48,31 @@
 		<script type="text/javascript" src="js/data.js"></script>
 		<!-- 通用js -->
 		<script type="text/javascript" src="js/general.js"></script>
+        <!-- 引入vue -->
+        <script type="text/javascript" src="js/vue-2.6.11.js"></script>
 		<!-- 当前js -->
 		<script type="text/javascript">
-			var words = data.yy;
-			getData();
+            var app=new Vue({
+                el:"#container",
+                data:{
+                    words:data.yy,
+                    word:""
+                },
+                methods:{
+                    /* 复制 */
+                    copy:function(){
+                        outer_copy(this.word,0);
+                    },
+                    /* 切换句子 */
+                    getData:function(){
+                        var index = Math.floor(Math.random() * this.words.length);
+                        this.word=this.words[index];
+                    }
+                },
+                mounted:function(){
+                    this.getData();
+                }
+            });
 		</script>
 	</body>
 </html>

@@ -1,17 +1,10 @@
-/* 获取文本盒子 */
-var word=document.getElementById("word");
-/* 复制 */
-function copy(){
-	var textArea = document.createElement("textarea");
-	textArea.innerHTML = word.innerText;
-	document.body.appendChild(textArea);
-	textArea.select();
-	document.execCommand('copy');
-	alert('复制成功:)');
-	textArea.parentNode.removeChild(textArea);
-}
-/* 切换句子 */
-function getData(){
-	var index = Math.floor(Math.random() * words.length);
-	word.innerText=words[index];
+/* 复制   flag 1-去标签 0-不去标签*/
+function outer_copy(word,flag){
+    var textArea = document.createElement("textarea");
+    textArea.innerHTML = flag==1?word.replace(/<[^>]+>/g,""):word;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand('copy');
+    alert('复制成功:)');
+    textArea.parentNode.removeChild(textArea);
 }
